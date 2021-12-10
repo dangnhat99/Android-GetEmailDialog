@@ -23,25 +23,66 @@ public class GetEmailDialog extends DialogFragment {
 
     GetEmailCallback callback;
 
-    private String title;
-    private String subTitle;
-    private String yesTitle;
-    private String noTitle;
+    private String title = "JOIN OUR NEWSLETTER";
+    private String subTitle = "Subscribe our newsletter to receive the lastest news and excludeive offers. No spam.";
+    private String yesTitle = "SUBSCRIBE";
+    private String noTitle = "NO THANKS";
+    private String hint = "Enter your email";
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+
+        if (edtEmail != null) {
+            edtEmail.setHint(hint);
+        }
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public String getYesTitle() {
+        return yesTitle;
+    }
+
+    public String getNoTitle() {
+        return noTitle;
+    }
+
+    public String getHint() {
+        return hint;
+    }
 
     public void setTitle(String title) {
         this.title = title;
+        if (txtTitle != null) {
+            txtTitle.setText(title);
+        }
     }
 
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
+        if (txtSubTitle != null) {
+            txtSubTitle.setText(subTitle);
+        }
     }
 
     public void setYesTitle(String yesTitle) {
         this.yesTitle = yesTitle;
+        if (btnYes != null) {
+            btnYes.setText(yesTitle);
+        }
     }
 
     public void setNoTitle(String noTitle) {
         this.noTitle = noTitle;
+        if (btnNo != null) {
+            btnNo.setText(noTitle);
+        }
     }
 
     public GetEmailDialog(GetEmailCallback callback) {
@@ -93,7 +134,11 @@ public class GetEmailDialog extends DialogFragment {
             btnNo.setText(noTitle);
         }
 
-        edtEmail.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        if (edtEmail != null && !hint.isEmpty()) {
+            edtEmail.setHint(hint);
+            edtEmail.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        }
+
         btnNo.setPaintFlags(btnNo.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
 
         btnYes.setOnClickListener(v -> {

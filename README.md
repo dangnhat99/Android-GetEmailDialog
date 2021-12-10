@@ -30,7 +30,7 @@ allprojects {
 Add this to your module's `build.gradle` file (make sure the version matches the JitPack badge above):
 ```groovy
 dependencies {
-   implementation 'com.github.dangnhat99:Android-GetEmailDialog:1.0'
+   implementation 'com.github.dangnhat99:Android-GetEmailDialog:1.3'
 }
 ```
 
@@ -83,6 +83,7 @@ dependencies {
 - emailDialog.setSubTitle(String subTitle)
 - emailDialog.setYesTitle(String yesTitle)
 - emailDialog.setNoTitle(String noTitle)
+-emailDialog.setHint(String hint) //hint for editText
 
 
 Developed By
